@@ -77,7 +77,7 @@ selected_mode = st.sidebar.selectbox("Mode (Major / Minor)", mode_options)
 
 st.sidebar.markdown("---")
 st.sidebar.markdown("""
-<div style='font-size:10px; color:#666; line-height:1.6'>
+<div style='font-size:12px; color:#666; line-height:1.6'>
 <b style='color:#1DB954'>Key Finding:</b><br>
 Playlist exposure is the strongest driver of streams not audio features like tempo or energy.
 </div>
