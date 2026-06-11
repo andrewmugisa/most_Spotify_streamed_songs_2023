@@ -8,13 +8,13 @@
 
 An end-to-end data analysis project exploring what drives song popularity on Spotify, using a dataset of the platform's most-streamed tracks in 2023.
 
-> **Central question:** Do musical attributes like tempo, energy, and danceability predict streaming success — or do distribution factors matter more?
+> **Central question:** Do musical attributes like tempo, energy, and danceability predict streaming success  or do distribution factors matter more?
 
 ---
 
 ## Key Finding
 
-**Playlist exposure is the strongest predictor of streams.** Tracks appearing in more Spotify playlists consistently accumulate more streams. Audio features — BPM, energy, danceability — show negligible correlation. This emerged from the data and contradicted the original hypothesis.
+**Playlist exposure is the strongest predictor of streams.** Tracks appearing in more Spotify playlists consistently accumulate more streams. Audio features  BPM, energy, danceability  show negligible correlation. This emerged from the data and contradicted the original hypothesis.
 
 ---
 
@@ -46,7 +46,7 @@ Sidebar filters: Release Year · Artist · Mode (Major / Minor)
 
 ## Dataset
 
-Source: [Kaggle — Spotify Most Streamed Songs 2023](https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023)
+Source: [Kaggle  Spotify Most Streamed Songs 2023](https://www.kaggle.com/datasets/nelgiriyewithana/top-spotify-songs-2023)
 
 952 tracks · 24 columns · includes audio features, release metadata, and playlist/chart appearances across Spotify, Apple Music, and Deezer.
 
