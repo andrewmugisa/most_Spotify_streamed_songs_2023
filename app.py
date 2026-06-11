@@ -381,7 +381,7 @@ st.markdown("---")
 st.markdown(
     "<p style='font-size:10px; color:#555; text-align:center;'>"
     "Source: Kaggle — Spotify Most Streamed Songs 2023 &nbsp;·&nbsp; "
-    "Analysis: Andrew Mugisa &nbsp;·&nbsp; Portfolio Project Deliverable #6"
+    "Analysis: Andrew Mugisa"
     "</p>",
     unsafe_allow_html=True
 )
