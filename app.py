@@ -113,7 +113,7 @@ df = load_data()
 # ── Sidebar filters ───────────────────────────────────────────────────────────
 # All three filters apply simultaneously to every chart on the page via the
 # `filtered` dataframe defined in the "Apply filters" section below.
-st.sidebar.markdown("## 🎛️ Filters")
+st.sidebar.markdown("##  Filters")
 st.sidebar.markdown("---")
 
 # Release year slider  defaults to 2010–2023 to focus on the modern era
@@ -134,7 +134,7 @@ selected_mode = st.sidebar.selectbox("Mode (Major / Minor)", mode_options)
 
 st.sidebar.markdown("---")
 st.sidebar.markdown("""
-<div style='font-size:10px; color:#666; line-height:1.6'>
+<div style='font-size:12px; color:#666; line-height:1.6'>
 <b style='color:#1DB954'>Key Finding:</b><br>
 Playlist exposure is the strongest driver of streams  not audio features like tempo or energy.
 </div>
@@ -381,7 +381,7 @@ with chart_col:
 # ── Footer ────────────────────────────────────────────────────────────────────
 st.markdown("---")
 st.markdown(
-    "<p style='font-size:10px; color:#555; text-align:center;'>"
+    "<p style='font-size:14px; color:#555; text-align:center;'>"
     "Source: Kaggle  Spotify Most Streamed Songs 2023 &nbsp;·&nbsp; "
     "Analysis: Andrew Mugisa"
     "</p>",
