@@ -60,7 +60,7 @@ def load_data():
 df = load_data()
 
 # ── Sidebar filters ───────────────────────────────────────────────────────────
-st.sidebar.markdown("## 🎛️ Filters")
+st.sidebar.markdown("##  Filters")
 st.sidebar.markdown("---")
 
 years = sorted(df["released_year"].unique())
@@ -79,7 +79,7 @@ st.sidebar.markdown("---")
 st.sidebar.markdown("""
 <div style='font-size:10px; color:#666; line-height:1.6'>
 <b style='color:#1DB954'>Key Finding:</b><br>
-Playlist exposure is the strongest driver of streams — not audio features like tempo or energy.
+Playlist exposure is the strongest driver of streams not audio features like tempo or energy.
 </div>
 """, unsafe_allow_html=True)
 
@@ -147,7 +147,7 @@ def base_layout(title):
 
 with col1:
     st.markdown("<div class='section-title'>Playlist Appearances vs. Streams</div>", unsafe_allow_html=True)
-    st.caption("Each dot is a track — the trend shows playlist exposure drives stream count")
+    st.caption("Each dot is a track the trend shows playlist exposure drives stream count")
 
     scatter_df = filtered.copy()
     fig1 = px.scatter(
@@ -193,7 +193,7 @@ col3, col4 = st.columns(2)
 
 with col3:
     st.markdown("<div class='section-title'>Average Streams by Release Year</div>", unsafe_allow_html=True)
-    st.caption("Older tracks score higher — more time to accumulate. 2023 releases appear low but are simply newer.")
+    st.caption("Older tracks score higher more time to accumulate. 2023 releases appear low but are simply newer.")
 
     year_df = filtered.groupby("released_year")["streams_m"].mean().reset_index()
     year_df.columns = ["Year", "Avg Streams (M)"]
@@ -217,7 +217,7 @@ with col3:
 
 with col4:
     st.markdown("<div class='section-title'>Audio Feature Correlations with Streams</div>", unsafe_allow_html=True)
-    st.caption("Pearson r — how strongly each feature relates to stream count")
+    st.caption("Pearson r how strongly each feature relates to stream count")
 
     features = ["in_spotify_playlists", "danceability_%", "released_year",
                 "acousticness_%", "valence_%", "energy_%", "bpm"]
@@ -293,7 +293,7 @@ with chart_col:
 st.markdown("---")
 st.markdown(
     "<p style='font-size:10px; color:#555; text-align:center;'>"
-    "Source: Kaggle — Spotify Most Streamed Songs 2023 &nbsp;·&nbsp; "
+    "Source: Kaggle - Spotify Most Streamed Songs 2023 &nbsp;·&nbsp; "
     "Analysis: Andrew Mugisa &nbsp;·&nbsp; Portfolio Project Deliverable #6"
     "</p>",
     unsafe_allow_html=True
