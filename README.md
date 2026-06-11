@@ -20,7 +20,7 @@ An end-to-end data analysis project exploring what drives song popularity on Spo
 
 ## Live Dashboard
 
-👉 **[View the interactive dashboard](https://andrewmugisa-most-spotify-streamed-songs-2023.streamlit.app)**
+👉 **[View the interactive dashboard](https://spotify-streaming-trends-2023-andrew-mugisa.streamlit.app/)**
 
 Built with Python (Streamlit + Plotly). Includes:
 - Playlist appearances vs. streams scatter plot with trendline
