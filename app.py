@@ -181,12 +181,11 @@ with col2:
         hovertemplate="<b>%{customdata[0]}</b><br>%{customdata[1]}<br>%{x:.0f}M streams<extra></extra>",
         customdata=top20[["track_name", "artist_name"]].values,
     ))
-    fig2.update_layout(
-        **base_layout(""),
-        yaxis=dict(autorange="reversed", gridcolor=GRID, tickfont=dict(size=9)),
-        xaxis=dict(gridcolor=GRID, title="Streams (Millions)"),
-        height=420,
-    )
+    layout2 = base_layout("")
+    layout2["yaxis"] = dict(autorange="reversed", gridcolor=GRID, tickfont=dict(size=9))
+    layout2["xaxis"] = dict(gridcolor=GRID, title="Streams (Millions)")
+    layout2["height"] = 420
+    fig2.update_layout(**layout2)
     st.plotly_chart(fig2, use_container_width=True)
 
 # ── Row 2: Release Year + Correlation ────────────────────────────────────────
@@ -210,7 +209,10 @@ with col3:
         fillcolor="rgba(29,185,84,0.1)",
         hovertemplate="<b>%{x}</b><br>Avg Streams: %{y:.0f}M<extra></extra>",
     ))
-    fig3.update_layout(**base_layout(""), xaxis=dict(gridcolor=GRID, dtick=1), yaxis=dict(gridcolor=GRID, title="Avg Streams (M)"))
+    layout3 = base_layout("")
+    layout3["xaxis"] = dict(gridcolor=GRID, dtick=1)
+    layout3["yaxis"] = dict(gridcolor=GRID, title="Avg Streams (M)")
+    fig3.update_layout(**layout3)
     st.plotly_chart(fig3, use_container_width=True)
 
 with col4:
@@ -235,13 +237,12 @@ with col4:
         marker_opacity=0.8,
         hovertemplate="<b>%{y}</b><br>r = %{x:.3f}<extra></extra>",
     ))
-    fig4.update_layout(
-        **base_layout(""),
-        xaxis=dict(gridcolor=GRID, range=[-0.25, 0.65], title="Pearson r"),
-        yaxis=dict(gridcolor=GRID, tickfont=dict(size=10)),
-        shapes=[dict(type="line", x0=0, x1=0, y0=-0.5, y1=len(labels)-0.5,
-                     line=dict(color="#555", width=1, dash="dot"))],
-    )
+    layout4 = base_layout("")
+    layout4["xaxis"] = dict(gridcolor=GRID, range=[-0.25, 0.65], title="Pearson r")
+    layout4["yaxis"] = dict(gridcolor=GRID, tickfont=dict(size=10))
+    layout4["shapes"] = [dict(type="line", x0=0, x1=0, y0=-0.5, y1=len(labels)-0.5,
+                     line=dict(color="#555", width=1, dash="dot"))]
+    fig4.update_layout(**layout4)
     st.plotly_chart(fig4, use_container_width=True)
 
 # ── Row 3: Audio feature explorer ────────────────────────────────────────────
