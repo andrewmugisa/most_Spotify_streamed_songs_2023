@@ -1,30 +1,30 @@
 """
-Spotify Streaming Trends 2023 — Interactive Dashboard
+Spotify Streaming Trends 2023  Interactive Dashboard
 ======================================================
 Author  : Andrew Mugisa
 Project : Portfolio Project Deliverable #6
 Tool    : Streamlit + Plotly
-Dataset : Kaggle — Spotify Most Streamed Songs 2023 (952 tracks, 24 columns)
+Dataset : Kaggle  Spotify Most Streamed Songs 2023 (952 tracks, 24 columns)
 
 Purpose
 -------
 This explanatory dashboard extends the EDA findings by letting the reader
 interact with the data directly. The central question: what actually drives
-streaming success on Spotify — audio features like tempo and energy, or
+streaming success on Spotify  audio features like tempo and energy, or
 distribution factors like playlist placement?
 
 Structure
 ---------
-1. Sidebar filters  — Release Year, Artist, Mode (Major/Minor)
-2. KPI row          — live summary metrics for the filtered selection
-3. Row 1            — Playlist Appearances vs Streams | Top 20 Songs
-4. Row 2            — Avg Streams by Release Year | Feature Correlations
-5. Row 3            — Audio Feature Explorer (interactive, user-selected)
+1. Sidebar filters   Release Year, Artist, Mode (Major/Minor)
+2. KPI row           live summary metrics for the filtered selection
+3. Row 1             Playlist Appearances vs Streams | Top 20 Songs
+4. Row 2             Avg Streams by Release Year | Feature Correlations
+5. Row 3             Audio Feature Explorer (interactive, user-selected)
 
 Key Finding (from EDA)
 ----------------------
 Playlist exposure (in_spotify_playlists) is the strongest predictor of
-stream count. Audio features — BPM, energy, danceability — show negligible
+stream count. Audio features  BPM, energy, danceability  show negligible
 correlation. Release year matters mainly because older songs have had more
 time to accumulate streams.
 """
@@ -34,6 +34,8 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import numpy as np
+
+
 
 # ── Page config ───────────────────────────────────────────────────────────────
 # Wide layout gives more room for the multi-column chart grid.
@@ -114,7 +116,7 @@ df = load_data()
 st.sidebar.markdown("## 🎛️ Filters")
 st.sidebar.markdown("---")
 
-# Release year slider — defaults to 2010–2023 to focus on the modern era
+# Release year slider  defaults to 2010–2023 to focus on the modern era
 # while still allowing exploration of older catalog tracks
 years = sorted(df["released_year"].unique())
 year_range = st.sidebar.slider(
@@ -122,11 +124,11 @@ year_range = st.sidebar.slider(
     (2010, 2023)
 )
 
-# Artist dropdown — "All Artists" is the default (no filtering)
+# Artist dropdown  "All Artists" is the default (no filtering)
 all_artists = ["All Artists"] + sorted(df["artist_name"].unique().tolist())
 selected_artist = st.sidebar.selectbox("Artist", all_artists)
 
-# Mode filter — Major vs Minor key; useful for testing musical hypothesis
+# Mode filter  Major vs Minor key; useful for testing musical hypothesis
 mode_options = ["All"] + sorted(df["mode"].dropna().unique().tolist())
 selected_mode = st.sidebar.selectbox("Mode (Major / Minor)", mode_options)
 
@@ -134,7 +136,7 @@ st.sidebar.markdown("---")
 st.sidebar.markdown("""
 <div style='font-size:10px; color:#666; line-height:1.6'>
 <b style='color:#1DB954'>Key Finding:</b><br>
-Playlist exposure is the strongest driver of streams — not audio features like tempo or energy.
+Playlist exposure is the strongest driver of streams  not audio features like tempo or energy.
 </div>
 """, unsafe_allow_html=True)
 
@@ -189,7 +191,7 @@ PLOT_BG  = "#111111"   # matches .stApp background
 PAPER_BG = "#111111"
 GRID     = "rgba(255,255,255,0.06)"  # subtle grid lines
 TICK     = "#707070"   # axis label colour
-GREEN    = "#1DB954"   # Spotify green — positive/primary series
+GREEN    = "#1DB954"   # Spotify green  positive/primary series
 RED      = "#e85d5d"   # negative correlation / trend line colour
 
 def base_layout(title):
@@ -214,11 +216,11 @@ col1, col2 = st.columns([1.1, 0.9])
 
 with col1:
     st.markdown("<div class='section-title'>Playlist Appearances vs. Streams</div>", unsafe_allow_html=True)
-    st.caption("Each dot is a track — the trend shows playlist exposure drives stream count")
+    st.caption("Each dot is a track  the trend shows playlist exposure drives stream count")
 
     # Scatter plot: in_spotify_playlists on x, streams_m on y
     # trendline="ols" fits a linear regression via statsmodels
-    # The red trend line is the key visual — its positive slope is the main finding
+    # The red trend line is the key visual  its positive slope is the main finding
     scatter_df = filtered.copy()
     fig1 = px.scatter(
         scatter_df,
@@ -253,7 +255,7 @@ with col2:
         hovertemplate="<b>%{customdata[0]}</b><br>%{customdata[1]}<br>%{x:.0f}M streams<extra></extra>",
         customdata=top20[["track_name", "artist_name"]].values,
     ))
-    # Merge base_layout then override axes — avoids duplicate key error
+    # Merge base_layout then override axes  avoids duplicate key error
     layout2 = base_layout("")
     layout2["yaxis"] = dict(autorange="reversed", gridcolor=GRID, tickfont=dict(size=9))
     layout2["xaxis"] = dict(gridcolor=GRID, title="Streams (Millions)")
@@ -266,7 +268,7 @@ col3, col4 = st.columns(2)
 
 with col3:
     st.markdown("<div class='section-title'>Average Streams by Release Year</div>", unsafe_allow_html=True)
-    st.caption("Older tracks score higher — more time to accumulate. 2023 releases appear low but are simply newer.")
+    st.caption("Older tracks score higher  more time to accumulate. 2023 releases appear low but are simply newer.")
 
     # NOTE: The dataset is a 2023 snapshot of the most-streamed songs.
     # released_year is when each song was originally published, not a
@@ -294,7 +296,7 @@ with col3:
 
 with col4:
     st.markdown("<div class='section-title'>Audio Feature Correlations with Streams</div>", unsafe_allow_html=True)
-    st.caption("Pearson r — how strongly each feature relates to stream count")
+    st.caption("Pearson r  how strongly each feature relates to stream count")
 
     # Pearson r computed against streams_m for each feature in the filtered set.
     # Sorted ascending so the strongest predictor (playlist count) appears at top.
@@ -327,7 +329,7 @@ with col4:
     st.plotly_chart(fig4, use_container_width=True)
 
 # ── Row 3: Audio Feature Explorer ────────────────────────────────────────────
-# Interactive section — user picks any audio feature and sees its scatter
+# Interactive section  user picks any audio feature and sees its scatter
 # against streams, with a live Pearson r interpretation below the dropdown.
 st.markdown("---")
 st.markdown("<div class='section-title'>Audio Feature Explorer</div>", unsafe_allow_html=True)
@@ -380,7 +382,7 @@ with chart_col:
 st.markdown("---")
 st.markdown(
     "<p style='font-size:10px; color:#555; text-align:center;'>"
-    "Source: Kaggle — Spotify Most Streamed Songs 2023 &nbsp;·&nbsp; "
+    "Source: Kaggle  Spotify Most Streamed Songs 2023 &nbsp;·&nbsp; "
     "Analysis: Andrew Mugisa"
     "</p>",
     unsafe_allow_html=True
