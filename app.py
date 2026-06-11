@@ -60,7 +60,7 @@ def load_data():
 df = load_data()
 
 # ── Sidebar filters ───────────────────────────────────────────────────────────
-st.sidebar.markdown("##  --> Filters")
+st.sidebar.markdown("##    Filters")
 st.sidebar.markdown("---")
 
 years = sorted(df["released_year"].unique())
