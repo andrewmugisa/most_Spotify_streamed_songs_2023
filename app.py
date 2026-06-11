@@ -157,7 +157,7 @@ col_logo, col_title = st.columns([0.05, 0.95])
 with col_title:
     st.markdown("# 🎵 Spotify Streaming Trends 2023")
     st.markdown(
-        "<p style='color:#a0a0a0; font-size:13px; margin-top:-10px;'>"
+        "<p style='color:#a0a0a0; font-size:13px; margin-top:-14px;'>"
         "What actually drives a song's success? &nbsp;·&nbsp; Analysis by Andrew Mugisa &nbsp;·&nbsp; "
         f"Showing <b style='color:#1DB954'>{len(filtered):,}</b> of {len(df):,} tracks</p>",
         unsafe_allow_html=True
