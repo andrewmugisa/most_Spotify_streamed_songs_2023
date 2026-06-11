@@ -16,7 +16,7 @@ st.markdown("""
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
   html, body, [class*="css"] { font-family: 'Inter', sans-serif; }
-  .stApp { background-color: #111111; color: #ffffff; }
+  .stApp { background-color: #000000; color: #ffffff; }
   section[data-testid="stSidebar"] { background-color: #1a1a1a; border-right: 1px solid #2a2a2a; }
   .metric-card {
     background: #1a1a1a;
